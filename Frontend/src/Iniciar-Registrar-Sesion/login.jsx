@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useAuth } from "../Context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
-import "./Login.css";
+import "./login.css";
 
 const Login = () => {
     const { login, error } = useAuth();
