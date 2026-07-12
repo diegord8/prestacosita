@@ -1,4 +1,4 @@
-// Context/ObjetosContext.jsx
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useContext,
@@ -35,7 +35,37 @@ export const ObjetosProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    cargarObjetos();
+    const controller = new AbortController();
+  
+    fetch(`${API}/objetos`, {
+      signal: controller.signal,
+    })
+      .then(async (res) => {
+        const data = await res.json();
+  
+        if (!res.ok) {
+          throw new Error(
+            data.error || "No se pudieron cargar los objetos"
+          );
+        }
+  
+        return data;
+      })
+      .then((data) => {
+        setObjetos(data);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error(
+            "No se pudo conectar con el servidor:",
+            error
+          );
+        }
+      });
+  
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const agregarObjeto = async (nuevoObjeto) => {

@@ -1,4 +1,4 @@
-// Context/SolicitudesContext.jsx
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useContext,
@@ -35,7 +35,37 @@ export const SolicitudesProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    cargarSolicitudes();
+    const controller = new AbortController();
+  
+    fetch(`${API}/solicitudes`, {
+      signal: controller.signal,
+    })
+      .then(async (res) => {
+        const data = await res.json();
+  
+        if (!res.ok) {
+          throw new Error(
+            data.error || "No se pudieron cargar las solicitudes"
+          );
+        }
+  
+        return data;
+      })
+      .then((data) => {
+        setSolicitudes(data);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error(
+            "No se pudo conectar con el servidor:",
+            error
+          );
+        }
+      });
+  
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const crearSolicitud = async (nuevaSolicitud) => {
