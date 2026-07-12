@@ -1,0 +1,228 @@
+.solrec-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.solrec-header {
+  margin-bottom: 2rem;
+}
+
+.solrec-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.3rem;
+}
+
+.solrec-header p {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* Vacío */
+.solrec-vacio {
+  background: #fff;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,.07);
+}
+
+.solrec-vacio .vacio-icono {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e8f7f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.8rem;
+  color: #20c997;
+}
+
+.solrec-vacio h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.solrec-vacio p { color: #6b7280; }
+
+/* Secciones */
+.solrec-seccion {
+  margin-bottom: 2.5rem;
+}
+
+.solrec-seccion-titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.solrec-seccion-titulo.resueltas {
+  color: #6b7280;
+}
+
+/* Lista */
+.solrec-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Card */
+.solrec-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.07);
+  transition: box-shadow .2s;
+}
+
+.solrec-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+
+.solrec-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.solrec-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.solrec-solicitante {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.solrec-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #20c997, #0ea67a);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solrec-solicitante span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.solrec-fechas {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Badges */
+.solrec-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.solrec-badge.amarillo { background: #fef9c3; color: #a16207; }
+.solrec-badge.verde    { background: #f0fdf4; color: #16a34a; }
+.solrec-badge.rojo     { background: #fff0f0; color: #dc2626; }
+.solrec-badge.gris     { background: #f3f4f6; color: #6b7280; }
+
+/* Mensaje conflicto/éxito */
+.solrec-mensaje {
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+}
+
+.solrec-mensaje.exito {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+}
+
+.solrec-mensaje.error {
+  background: #fff0f0;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+/* Botones aprobar/rechazar */
+.solrec-acciones {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.btn-aprobar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.65rem;
+  background: linear-gradient(135deg, #20c997, #0ea67a);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(32,201,151,.25);
+  transition: opacity .2s;
+}
+
+.btn-aprobar:hover { opacity: 0.88; }
+
+.btn-rechazar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.65rem;
+  background: #fff0f0;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.btn-rechazar:hover { background: #fecaca; }

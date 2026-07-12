@@ -1,0 +1,224 @@
+.detalle-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .detalle-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #374151;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: background .2s;
+  }
+  
+  .detalle-volver:hover { background: #f3f4f6; }
+  
+  .detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  
+  /* Imagen */
+  .detalle-imagen-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .detalle-imagen {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .detalle-categoria {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #20c997;
+    background: rgba(255,255,255,.92);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+  }
+  
+  /* Info */
+  .detalle-info h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0.75rem;
+  }
+  
+  .detalle-descripcion {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Dueño */
+  .detalle-dueno {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  
+  .detalle-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #20c997, #0ea67a);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .detalle-dueno-nombre {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    display: block;
+  }
+  
+  .detalle-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.82rem;
+    color: #f59e0b;
+  }
+  
+  /* Objeto propio */
+  .detalle-propio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: #f3f4f6;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  
+  /* Formulario */
+  .detalle-form-card {
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  
+  .detalle-form-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 1.25rem;
+  }
+  
+  .detalle-mensaje {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+  
+  .detalle-mensaje.exito {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #16a34a;
+  }
+  
+  .detalle-mensaje.error {
+    background: #fff0f0;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+  }
+  
+  .detalle-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .form-field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .form-field input[type="date"] {
+    padding: 0.7rem 1rem;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-family: inherit;
+    color: #1a1a2e;
+    background: #fafafa;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  
+  .form-field input[type="date"]:focus {
+    border-color: #20c997;
+    box-shadow: 0 0 0 3px rgba(32,201,151,.15);
+    background: #fff;
+  }
+  
+  .btn-solicitar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.82rem;
+    background: linear-gradient(135deg, #20c997, #0ea67a);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(32,201,151,.3);
+    transition: opacity .2s, transform .15s;
+  }
+  
+  .btn-solicitar:hover { opacity: 0.9; transform: translateY(-1px); }
+  
+  @media (max-width: 768px) {
+    .detalle-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }

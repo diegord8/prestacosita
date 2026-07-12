@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-bg:         #0f1923;
+  --header-border:     rgba(255,255,255,.06);
+  --header-glow:       rgba(32, 201, 151, 0.12);
+  --accent:            #20c997;
+  --accent-hover:      #17a87e;
+  --accent-pill-bg:    rgba(32, 201, 151, 0.15);
+  --accent-pill-text:  #20c997;
+  --text-logo:         #ffffff;
+  --text-nav:          #b0bec5;
+  --text-nav-hover:    #ffffff;
+  --logout-hover-bg:   rgba(255, 99, 99, 0.12);
+  --logout-hover-text: #ff6b6b;
+  --bg-main:           #f0faf6;
+  --radius-pill:       999px;
+  --radius-icon:       11px;
+  --transition:        0.2s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-main);
+}
+
+/* ── Header ── */
+.layout-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 2.5rem;
+  height: 66px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow:
+    0 1px 0 0 var(--header-glow),
+    0 4px 24px 0 rgba(0,0,0,.35);
+  background-image: linear-gradient(
+    90deg,
+    rgba(32, 201, 151, 0.05) 0%,
+    transparent 40%
+  );
+}
+
+/* ── Logo ── */
+.layout-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity var(--transition);
+}
+.layout-logo-wrapper:hover { opacity: 0.85; }
+
+.layout-logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-icon);
+  background: linear-gradient(135deg, #20c997 0%, #0ea67a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #fff;
+  box-shadow:
+    0 0 0 2px rgba(32, 201, 151, 0.25),
+    0 4px 12px rgba(32, 201, 151, 0.3);
+  flex-shrink: 0;
+}
+
+.layout-logo { height: 38px; width: auto; }
+
+.layout-logo-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-logo);
+  letter-spacing: -0.025em;
+}
+.layout-logo-text span { color: var(--accent); }
+
+/* ── Nav ── */
+.layout-nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.layout-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.layout-nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.42rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-nav);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition);
+}
+
+.layout-nav ul li a:hover {
+  background: rgba(255,255,255,.07);
+  color: var(--text-nav-hover);
+}
+
+.layout-nav ul li a.active {
+  background: var(--accent-pill-bg);
+  color: var(--accent-pill-text);
+  font-weight: 600;
+}
+
+.layout-nav ul li a svg,
+.layout-nav ul li a .nav-icon {
+  width: 15px;
+  height: 15px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.layout-nav ul li a.active svg,
+.layout-nav ul li a.active .nav-icon,
+.layout-nav ul li a:hover svg,
+.layout-nav ul li a:hover .nav-icon { opacity: 1; }
+
+/* ── Acciones (Salir) ── */
+.layout-nav-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255,255,255,.1);
+  flex-shrink: 0;
+}
+
+.layout-nav-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.layout-nav-actions a,
+.layout-nav-actions button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-nav);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background var(--transition), color var(--transition);
+}
+
+.layout-nav-actions a:hover,
+.layout-nav-actions button:hover {
+  background: var(--logout-hover-bg);
+  color: var(--logout-hover-text);
+}
+
+/* ── Main ── */
+.layout-main { flex: 1; width: 100%; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .layout-header { padding: 0 1.25rem; gap: 0.75rem; }
+  .layout-nav ul li a { padding: 0.4rem 0.65rem; font-size: 0.82rem; }
+}
+
+@media (max-width: 640px) {
+  .layout-logo-text { display: none; }
+  .layout-nav ul li a .nav-label { display: none; }
+}
