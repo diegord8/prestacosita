@@ -1,19 +1,38 @@
 # Dependencias
 node_modules/
 
-# Variables privadas
+# Variables de entorno y secretos
 .env
-.env.local
-.env.development
-.env.production
-
-# Permitir archivos de ejemplo
+.env.*
 !.env.example
 
-# Compilaciones
+# Archivos generados al compilar
 dist/
 build/
+
+# Vercel
+.vercel/
+
+# Cobertura de pruebas
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Configuración antigua de Sequelize
+config/config.json
+
+# Archivos temporales del editor
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+desktop.ini

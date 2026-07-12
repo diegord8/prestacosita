@@ -1,7 +1,13 @@
 // Context/SolicitudesContext.jsx
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-const API = import.meta.env.VITE_API_URL;
+import API from "../config/api";
+
 const SolicitudesContext = createContext();
 
 export const SolicitudesProvider = ({ children }) => {
@@ -10,9 +16,21 @@ export const SolicitudesProvider = ({ children }) => {
   const cargarSolicitudes = async () => {
     try {
       const res = await fetch(`${API}/solicitudes`);
-      setSolicitudes(await res.json());
-    } catch {
-      console.error("No se pudo conectar con el servidor");
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(
+          data.error || "No se pudieron cargar las solicitudes"
+        );
+        return;
+      }
+
+      setSolicitudes(data);
+    } catch (error) {
+      console.error(
+        "No se pudo conectar con el servidor:",
+        error
+      );
     }
   };
 
@@ -21,45 +39,161 @@ export const SolicitudesProvider = ({ children }) => {
   }, []);
 
   const crearSolicitud = async (nuevaSolicitud) => {
-    await fetch(`${API}/solicitudes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(nuevaSolicitud),
-    });
-    await cargarSolicitudes();
+    try {
+      const res = await fetch(`${API}/solicitudes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(nuevaSolicitud),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return {
+          exito: false,
+          mensaje:
+            data.error || "No se pudo crear la solicitud",
+        };
+      }
+
+      await cargarSolicitudes();
+
+      return {
+        exito: true,
+        mensaje: "Solicitud creada correctamente",
+      };
+    } catch (error) {
+      console.error("Error al crear solicitud:", error);
+
+      return {
+        exito: false,
+        mensaje: "No se pudo conectar con el servidor",
+      };
+    }
   };
 
   const cancelarSolicitud = async (id) => {
-    await fetch(`${API}/solicitudes/${id}/cancelar`, { method: "PUT" });
-    await cargarSolicitudes();
+    try {
+      const res = await fetch(
+        `${API}/solicitudes/${id}/cancelar`,
+        {
+          method: "PUT",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return {
+          exito: false,
+          mensaje:
+            data.error || "No se pudo cancelar la solicitud",
+        };
+      }
+
+      await cargarSolicitudes();
+
+      return {
+        exito: true,
+        mensaje: "Solicitud cancelada correctamente",
+      };
+    } catch (error) {
+      console.error("Error al cancelar solicitud:", error);
+
+      return {
+        exito: false,
+        mensaje: "No se pudo conectar con el servidor",
+      };
+    }
   };
 
   const aprobarSolicitud = async (id) => {
-    const res = await fetch(`${API}/solicitudes/${id}/aprobar`, { method: "PUT" });
-    const data = await res.json();
-    await cargarSolicitudes();
-    if (!res.ok) {
-      return { exito: false, mensaje: data.error };
+    try {
+      const res = await fetch(
+        `${API}/solicitudes/${id}/aprobar`,
+        {
+          method: "PUT",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return {
+          exito: false,
+          mensaje:
+            data.error || "No se pudo aprobar la solicitud",
+        };
+      }
+
+      await cargarSolicitudes();
+
+      return {
+        exito: true,
+        mensaje: "Solicitud aprobada correctamente",
+      };
+    } catch (error) {
+      console.error("Error al aprobar solicitud:", error);
+
+      return {
+        exito: false,
+        mensaje: "No se pudo conectar con el servidor",
+      };
     }
-    return { exito: true, mensaje: "Solicitud aprobada" };
   };
 
   const rechazarSolicitud = async (id) => {
-    await fetch(`${API}/solicitudes/${id}/rechazar`, { method: "PUT" });
-    await cargarSolicitudes();
+    try {
+      const res = await fetch(
+        `${API}/solicitudes/${id}/rechazar`,
+        {
+          method: "PUT",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return {
+          exito: false,
+          mensaje:
+            data.error || "No se pudo rechazar la solicitud",
+        };
+      }
+
+      await cargarSolicitudes();
+
+      return {
+        exito: true,
+        mensaje: "Solicitud rechazada correctamente",
+      };
+    } catch (error) {
+      console.error("Error al rechazar solicitud:", error);
+
+      return {
+        exito: false,
+        mensaje: "No se pudo conectar con el servidor",
+      };
+    }
   };
 
   return (
-    <SolicitudesContext.Provider value={{
-      solicitudes,
-      crearSolicitud,
-      cancelarSolicitud,
-      aprobarSolicitud,
-      rechazarSolicitud,
-    }}>
+    <SolicitudesContext.Provider
+      value={{
+        solicitudes,
+        cargarSolicitudes,
+        crearSolicitud,
+        cancelarSolicitud,
+        aprobarSolicitud,
+        rechazarSolicitud,
+      }}
+    >
       {children}
     </SolicitudesContext.Provider>
   );
 };
 
-export const useSolicitudes = () => useContext(SolicitudesContext);
+export const useSolicitudes = () =>
+  useContext(SolicitudesContext);
